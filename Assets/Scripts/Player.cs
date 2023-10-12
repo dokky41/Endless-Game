@@ -15,13 +15,15 @@ public class Player : MonoBehaviour
     [SerializeField] float positionX = 3.5f;
     [SerializeField] RoadLine roadLine;
 
+    [SerializeField] ObjectSound objectSound = new ObjectSound();
+
     void Start()
     {
         roadLine = RoadLine.MIDDLE;
 
     }
 
-    
+   
     void Update()
     {
         // 캐릭터 이동 함수
@@ -34,10 +36,13 @@ public class Player : MonoBehaviour
 
     public void Move()
     {
-        
+       
         // 왼쪽 방향키를 눌렀을 때
         if(Input.GetKeyDown (KeyCode.LeftArrow))
         {
+            AudioManager.instance.Sound(objectSound.audioClip[0]);
+
+
             if(roadLine == RoadLine.LEFT)
             {
                 roadLine = RoadLine.LEFT;
@@ -49,6 +54,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow)) // 오른쪽
         {
+            AudioManager.instance.Sound(objectSound.audioClip[0]);
 
             if (roadLine == RoadLine.RIGHT)
             {
