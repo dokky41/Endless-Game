@@ -91,7 +91,18 @@ public class Player : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        IItem item = other.GetComponent<IItem>();
 
-   
+        if(item != null)
+        {
+            item.Use();
+        }    
+        
+    }
+
+
+
 
 }

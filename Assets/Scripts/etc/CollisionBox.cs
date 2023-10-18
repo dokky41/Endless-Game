@@ -9,7 +9,7 @@ public class CollisionBox : MonoBehaviour
     {
 
         if (other.CompareTag("Player"))
-        {
+        { 
             RoadManager.roadCallback();
         }
 

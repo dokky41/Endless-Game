@@ -8,6 +8,7 @@ public class RoadManager : MonoBehaviour
     [SerializeField] float speed = 1.0f;
     [SerializeField] float offset = 40f;
     [SerializeField] List<GameObject> roads;
+
     public static Action roadCallback;
 
     public void Start()
@@ -38,6 +39,8 @@ public class RoadManager : MonoBehaviour
 
         roads.Add(firstRoad);
 
+        // 하위 오브젝트에 있는 CoinManager 클래스에 NewPosition() 함수를 호출합니다.
+        transform.GetComponentInChildren<CoinManager>().NewPosition();
     }
 
 
