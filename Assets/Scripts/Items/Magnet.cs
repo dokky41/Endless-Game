@@ -6,6 +6,7 @@ public class Magnet : Item, IItem
 {
     public void Use()
     {
+       
         Debug.Log("Magnet");
     }
 }

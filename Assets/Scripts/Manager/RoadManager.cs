@@ -40,7 +40,7 @@ public class RoadManager : MonoBehaviour
         roads.Add(firstRoad);
 
         // 하위 오브젝트에 있는 CoinManager 클래스에 NewPosition() 함수를 호출합니다.
-        transform.GetComponentInChildren<CoinManager>().NewPosition();
+        firstRoad.transform.GetComponentInChildren<CoinManager>().NewPosition();
     }
 
 

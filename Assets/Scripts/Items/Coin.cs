@@ -8,6 +8,8 @@ public class Coin : Item, IItem
     public void Use()
     {
         Debug.Log("Coin");
+        
     }
     
+
 }
