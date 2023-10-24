@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
@@ -10,10 +11,11 @@ public class ButtonManager : MonoBehaviour
 
     [SerializeField] int createCount;
     [SerializeField] Button buttonPrefab;
-    [SerializeField] string buttonName;
 
+    [SerializeField] string [] titleName; 
     [SerializeField] List<Button> buttons;
     [SerializeField] Transform createPosition;
+
 
 
     // Start is called before the first frame update
@@ -33,25 +35,11 @@ public class ButtonManager : MonoBehaviour
 
             button.transform.SetParent(createPosition);
 
-            switch(i)
-            {
-                case 0:
-                    buttonName = "START";
-                    break;
-                case 1:
-                    buttonName = "SETTING";
-                    break;
-                case 2:
-                    buttonName = "INFO";
-                    break;
-                case 3:
-                    buttonName = "QUIT";
-                    break;
-            }
-            
-            button.GetComponentInChildren<TextMeshProUGUI>().text = buttonName;
-
+          
             buttons.Add(button);
+            
+            button.GetComponentInChildren<TextMeshProUGUI>().text = titleName[i];
+
         }
 
     }
@@ -59,16 +47,16 @@ public class ButtonManager : MonoBehaviour
     private void Register()
     {
             
-            buttons[0].onClick.AddListener(A);
+            buttons[0].onClick.AddListener(StartGame);
             buttons[1].onClick.AddListener(B);
             buttons[2].onClick.AddListener(C);
             buttons[3].onClick.AddListener(D);
         
     }
 
-    public void A()
+    public void StartGame()
     {
-        Debug.Log("A");
+        GameManager.instance.StartCoroutine(GameManager.instance.StartRoutine());
     }
 
     public void B()
