@@ -12,6 +12,7 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] int createCount;
     [SerializeField] Button buttonPrefab;
 
+
     [SerializeField] string [] titleName; 
     [SerializeField] List<Button> buttons;
     [SerializeField] Transform createPosition;
@@ -32,10 +33,8 @@ public class ButtonManager : MonoBehaviour
         {
             Button button = Instantiate(buttonPrefab);
 
-
             button.transform.SetParent(createPosition);
-
-          
+  
             buttons.Add(button);
             
             button.GetComponentInChildren<TextMeshProUGUI>().text = titleName[i];
@@ -54,9 +53,14 @@ public class ButtonManager : MonoBehaviour
         
     }
 
+
+
+
     public void StartGame()
     {
-        GameManager.instance.StartCoroutine(GameManager.instance.StartRoutine());
+
+        GameManager.instance.StartCoroutine(GameManager.instance.StartRoutine(3));
+
     }
 
     public void B()
@@ -73,4 +77,7 @@ public class ButtonManager : MonoBehaviour
     {
         Debug.Log("D");
     }
+
+    
+
 }

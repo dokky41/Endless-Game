@@ -49,7 +49,9 @@ public class CoinManager : MonoBehaviour
             element.SetActive(true);
             element.transform.rotation = Quaternion.Euler
             (
-                90, 0, rotatePrefab.transform.rotation.eulerAngles.z
+                rotatePrefab.transform.rotation.eulerAngles.x,
+                rotatePrefab.transform.rotation.eulerAngles.y, 
+                rotatePrefab.transform.rotation.eulerAngles.z
              );
         }
 
