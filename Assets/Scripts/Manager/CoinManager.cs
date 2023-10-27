@@ -46,13 +46,14 @@ public class CoinManager : MonoBehaviour
     {
         foreach (var element in coins)
         {
-            element.SetActive(true);
             element.transform.rotation = Quaternion.Euler
             (
                 rotatePrefab.transform.rotation.eulerAngles.x,
                 rotatePrefab.transform.rotation.eulerAngles.y, 
                 rotatePrefab.transform.rotation.eulerAngles.z
              );
+
+            element.GetComponent<MeshRenderer>().enabled = true;
         }
 
         itemCount = percentage.Rand(50, out flag);

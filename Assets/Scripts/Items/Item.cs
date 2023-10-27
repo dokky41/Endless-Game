@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] float rotateSpeed = 75.0f;
     protected GameObject rotatePrefab; 
+    [SerializeField] float rotateSpeed = 200.0f;
+    [SerializeField] protected ParticleSystem effect;
 
     protected void Awake()
     {

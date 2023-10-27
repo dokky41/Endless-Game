@@ -12,7 +12,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] Animator textAnimator;
     [SerializeField] Animator playerAnimator;
     [SerializeField] Animator cameraAnimator;
-    
+
+    WaitForSecondsRealtime waitForSecondsRealTime = new WaitForSecondsRealtime(1f);
+
     void Start()
     {
         GameOver();
@@ -35,8 +37,11 @@ public class GameManager : Singleton<GameManager>
         while(count > 0)
         {
             textAnimator.GetComponent<TextMeshProUGUI>().text = count.ToString();
+
             textAnimator.Play("Count Down");
-            yield return new WaitForSecondsRealtime(1f);
+
+            yield return waitForSecondsRealTime;
+
             count--;
         }
     
