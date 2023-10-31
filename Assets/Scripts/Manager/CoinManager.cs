@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class CoinManager : MonoBehaviour
     [SerializeField] int createCount = 20;
     [SerializeField] float positionX = 3.5f;
 
+    [SerializeField] ItemManager itemManager;
     [SerializeField] GameObject rotatePrefab;
 
     [SerializeField] GameObject coinPrefab;
@@ -24,6 +26,8 @@ public class CoinManager : MonoBehaviour
     void Start()
     {
         percentage = GetComponent<Percentage>();
+
+        itemManager = GameObject.Find("Item Manager").GetComponent<ItemManager>();
 
         CreateCoin();
     }
@@ -61,6 +65,13 @@ public class CoinManager : MonoBehaviour
         if (flag == true)
         {
             coins[itemCount].SetActive(false);
+            
+            GameObject item = itemManager.CloneItem();
+
+            item.transform.SetParent(createPosition);
+
+            item.transform.position = coins[itemCount].transform.position;
+
         }
     }
 

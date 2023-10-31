@@ -5,15 +5,22 @@ using UnityEngine;
 
 public class RoadManager : MonoBehaviour
 {
+    [SerializeField] int count = 0;
+    [SerializeField] int maxCount = 10;
+
     [SerializeField] float speed = 1.0f;
     [SerializeField] float offset = 40f;
+
     [SerializeField] List<GameObject> roads;
 
     public static Action roadCallback;
 
     public void Start()
     {
+        roads.Capacity = 10;
+
         roadCallback = NewPosition; // 함수 주소를 넣는다
+        roadCallback += Increase; 
     }
 
 
@@ -43,7 +50,15 @@ public class RoadManager : MonoBehaviour
         firstRoad.transform.GetComponentInChildren<CoinManager>().NewPosition();
     }
 
+    public void Increase()
+    {
 
+        if(count < maxCount)
+        {
+            speed += Util.IncreaseValue(count++);
+        }
+
+    }
 
 
 }
