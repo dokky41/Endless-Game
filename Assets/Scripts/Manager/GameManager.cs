@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameManager : Singleton<GameManager>
 {
 
+    [SerializeField] public float speed = 15f;
     [SerializeField] GameObject layoutPanel;
 
     [SerializeField] Animator textAnimator;
