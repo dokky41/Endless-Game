@@ -24,6 +24,8 @@ public class GameManager : Singleton<GameManager>
     public void GameOver()
     {
         Time.timeScale = 0.0f;
+
+
     }
 
   
@@ -31,11 +33,13 @@ public class GameManager : Singleton<GameManager>
     {
         cameraAnimator.enabled = true;
         playerAnimator.SetTrigger("Start");
-    
+
+        layoutPanel.SetActive(false);
+
         // 코루틴은 시간에 관련이 있기 때문에
         // 현재 Time.Scale이 0이므로, WaitForSecondsRealtime을 선언
-        
-        while(count > 0)
+
+        while (count > 0)
         {
             textAnimator.GetComponent<TextMeshProUGUI>().text = count.ToString();
 
@@ -45,8 +49,7 @@ public class GameManager : Singleton<GameManager>
 
             count--;
         }
-    
-        layoutPanel.SetActive(false);
+      
         textAnimator.gameObject.SetActive(false);
 
         playerAnimator.SetLayerWeight(1, 0);
