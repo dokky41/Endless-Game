@@ -9,4 +9,13 @@ public class Obstacle : MonoBehaviour
     {
         transform.Translate(Vector3.forward * GameManager.instance.speed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Disable Zone"))
+        {
+            gameObject.SetActive(false);
+        }    
+    }
+
 }
