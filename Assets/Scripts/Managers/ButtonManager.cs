@@ -12,11 +12,12 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] int createCount;
     [SerializeField] Button buttonPrefab;
 
-
     [SerializeField] string [] titleName; 
     [SerializeField] List<Button> buttons;
     [SerializeField] Transform createPosition;
 
+    [SerializeField] GameObject optionPanel;
+    
 
 
     // Start is called before the first frame update
@@ -48,8 +49,8 @@ public class ButtonManager : MonoBehaviour
             
             buttons[0].onClick.AddListener(StartGame);
             buttons[1].onClick.AddListener(B);
-            buttons[2].onClick.AddListener(C);
-            buttons[3].onClick.AddListener(D);
+            buttons[2].onClick.AddListener(Option);
+            buttons[3].onClick.AddListener(Quit);
         
     }
 
@@ -68,14 +69,18 @@ public class ButtonManager : MonoBehaviour
         Debug.Log("B");
     }
 
-    public void C()
+    public void Option()
     {
-        Debug.Log("C");
+        optionPanel.SetActive(true);
     }
 
-    public void D()
+    public void Quit()
     {
-        Debug.Log("D");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
@@ -15,6 +16,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] Animator cameraAnimator;
 
     WaitForSecondsRealtime waitForSecondsRealTime = new WaitForSecondsRealtime(1f);
+
+    [SerializeField] GameObject gameOverPanel;
 
     void Start()
     {
@@ -56,5 +59,16 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1.0f;
     }
 
+
+    public void Retry()
+    {
+        //SceneManager.GetActiveScene().name은 현재 씬의 이름을 의미합니다.
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GameOverPanel()
+    {
+        gameOverPanel.SetActive(true);
+    }
 
 }
